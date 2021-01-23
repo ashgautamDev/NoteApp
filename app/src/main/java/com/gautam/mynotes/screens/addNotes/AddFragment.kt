@@ -1,4 +1,4 @@
-package com.gautam.mynotes.screens
+package com.gautam.mynotes.screens.addNotes
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

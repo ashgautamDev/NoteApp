@@ -5,6 +5,9 @@
     tools:context=".NotesFragment">
 
    <data>
+       <variable
+           name="notesViewModel"
+           type="com.gautam.mynotes.screens.notes.NotesViewModel" />
 
    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:autofillHints=""
         android:id="@+id/etSeachBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -31,7 +35,7 @@
         android:drawablePadding="10dp"
         android:inputType="textPersonName"
         android:outlineProvider="bounds"
-        android:text="@string/search_box"
+        android:hint="@string/search_box"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
