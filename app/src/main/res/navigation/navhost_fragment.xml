@@ -2,21 +2,22 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navhost_fragment"
+    android:id="@+id/navHost_fragment"
     app:startDestination="@id/notesFragment">
 
     <fragment
         android:id="@+id/notesFragment"
-        android:name="com.gautam.mynotes.NotesFragment"
+        android:name="com.gautam.mynotes.screens.notes.NotesFragment"
         android:label="fragment_notes"
         tools:layout="@layout/fragment_notes" >
         <action
             android:id="@+id/action_notesFragment_to_addFragment"
             app:destination="@id/addFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.gautam.mynotes.AddFragment"
+        android:name="com.gautam.mynotes.screens.addNotes.AddFragment"
         android:label="fragment_add"
         tools:layout="@layout/fragment_add" >
         <action

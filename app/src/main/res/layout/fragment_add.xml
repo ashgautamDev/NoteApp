@@ -1,55 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   >
-
-   <data>
-
-   </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_margin="16dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".AddFragment"
-    >
+    tools:context=".screens.addNotes.AddFragment">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         app:cardCornerRadius="10dp"
-        >
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:orientation="vertical">
-           <EditText
-               android:id="@+id/etTitle"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:hint="@string/title_hint"
-               style="@style/TextAppearance.AppCompat.Large"
-               android:inputType="textShortMessage"
-               />
-           <EditText
-               android:id="@+id/etDescription"
-               android:layout_width="match_parent"
-               android:layout_height="550dp"
-               android:gravity="start"
-               android:hint="@string/descp_hint"
-               style="@style/TextAppearance.AppCompat.Large"
-               android:inputType="textMultiLine"
-               />
-           <Button
-               android:text="@string/add_button_text"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"/>
-       </LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etTitle"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/title_hint"
+                android:inputType="textShortMessage" />
+
+            <EditText
+                android:id="@+id/etDescription"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="match_parent"
+                android:layout_height="550dp"
+                android:gravity="start"
+                android:hint="@string/descp_hint"
+                android:inputType="textMultiLine" />
+
+
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/add_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-</layout>
