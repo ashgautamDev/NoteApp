@@ -7,10 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DiffUtil
 import com.gautam.mynotes.R
 import com.gautam.mynotes.databinding.FragmentAddBinding
 import com.gautam.mynotes.room.Notes
@@ -34,10 +32,9 @@ class AddFragment : Fragment() {
     ): View? {
     _binding  = FragmentAddBinding.inflate(inflater,container,false)
         val application = requireNotNull(this.activity).application
-        val noteDao = NotesDatabase.getDatabase(application).notesDao()
-        val notesRepository = NotesRepository(noteDao)
 
-        val viewModelFactory = NotesViewModelFactory(notesRepository, application)
+
+        val viewModelFactory = NotesViewModelFactory(application)
         notesViewModel = ViewModelProvider(this , viewModelFactory).get(NotesViewModel::class.java)
 
         binding.saveButton.setOnClickListener {
@@ -49,10 +46,11 @@ class AddFragment : Fragment() {
     private fun saveNotesToDatabase() {
         val title = binding.etTitle.text.toString()
         val description = binding.etDescription.text.toString()
-        if (inputcheck(title,description)){
+        if (inputCheck(title,description)){
             val notes = Notes(0,title,description)
             notesViewModel.insetNotes(notes)
-            Toast.makeText(requireContext(), "Notes Added Succesfully", Toast.LENGTH_SHORT).show()
+
+            Toast.makeText(requireContext(), "Successfully Added", Toast.LENGTH_SHORT).show()
             // Navigate Back to the Main Fragment
             findNavController().navigate(R.id.action_addFragment_to_notesFragment)
         }else{
@@ -60,7 +58,7 @@ class AddFragment : Fragment() {
         }
     }
 
-    private fun inputcheck(title : String , description : String) : Boolean{
+    private fun inputCheck(title : String, description : String) : Boolean{
         return !(TextUtils.isEmpty(title) && TextUtils.isEmpty(description))
     }
 

@@ -3,8 +3,12 @@ package com.gautam.mynotes.screens.notes
 import androidx.lifecycle.LiveData
 import com.gautam.mynotes.room.Notes
 import com.gautam.mynotes.room.NotesDao
+import com.gautam.mynotes.room.NotesDatabase
 
-class NotesRepository(private val notesDao: NotesDao) {
+
+class NotesRepository(private val notesDatabase: NotesDatabase) {
+
+    private val notesDao = notesDatabase.notesDao()
 
     val getAllNotes : LiveData<List<Notes>> = notesDao.getAllNotes()
 
@@ -17,7 +21,7 @@ class NotesRepository(private val notesDao: NotesDao) {
     }
 
     suspend fun deleteNotes(notes: Notes) {
-        notesDao.deleteNote(notes)
+       notesDao.deleteNote(notes)
     }
 
 
