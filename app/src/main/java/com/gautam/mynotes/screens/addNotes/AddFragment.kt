@@ -37,7 +37,7 @@ class AddFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        notesViewModel =(activity as MainActivity).notesViewModel
+        notesViewModel = (activity as MainActivity).notesViewModel
         binding.saveButton.setOnClickListener {
             saveNotesToDatabase()
         }

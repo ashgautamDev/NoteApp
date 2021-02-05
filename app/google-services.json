@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "15635596645",
+    "project_id": "my-notes-8bef4",
+    "storage_bucket": "my-notes-8bef4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15635596645:android:1f03b150c6f60c4d778d8c",
+        "android_client_info": {
+          "package_name": "com.gautam.mynotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15635596645-6ehgf6sn43ksb3n49s5jambb4hbl76sd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4-dH2Hy8eL3DFLaMGfnp3-ZJwQSDi5cw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15635596645-6ehgf6sn43ksb3n49s5jambb4hbl76sd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
