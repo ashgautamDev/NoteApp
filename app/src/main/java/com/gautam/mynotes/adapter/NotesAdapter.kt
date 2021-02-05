@@ -3,17 +3,31 @@ package com.gautam.mynotes.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.gautam.mynotes.databinding.ActivityMainBinding.bind
 import com.gautam.mynotes.databinding.NotesCardLayoutBinding
 import com.gautam.mynotes.room.Notes
 
 
-
-
 class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
 
-    private var data = emptyList<Notes>()
+    class NotesViewHolder(val binding: NotesCardLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
+
+
+    private val differCallback = object : DiffUtil.ItemCallback<Notes>() {
+        override fun areItemsTheSame(oldItem: Notes, newItem: Notes): Boolean {
+            return oldItem.noteId == newItem.noteId
+        }
+
+        override fun areContentsTheSame(oldItem: Notes, newItem: Notes): Boolean {
+            return oldItem == newItem
+        }
+
+    }
+    val differ = AsyncListDiffer(this,differCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
         val view =
@@ -22,24 +36,14 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
-        val notes = data[position]
+        val notes = differ.currentList[position]
 
-        holder.binding.tvTitle.text = notes.noteTitle
-        holder.binding.tvDesc.text = notes.notesDesc
-
+        holder.binding.tvTitle.text = notes.noteTitle.toString()
+        holder.binding.tvDesc.text = notes.notesDesc.toString()
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return differ.currentList.size
     }
-
-    class NotesViewHolder(val binding: NotesCardLayoutBinding) :
-    RecyclerView.ViewHolder(binding.root)
-
-    fun setData(notes : List<Notes>) {
-        this.data = notes
-        notifyDataSetChanged()
-    }
-
 
 }

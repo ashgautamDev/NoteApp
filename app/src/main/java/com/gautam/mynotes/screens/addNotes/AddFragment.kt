@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.gautam.mynotes.MainActivity
 import com.gautam.mynotes.R
 import com.gautam.mynotes.databinding.FragmentAddBinding
 import com.gautam.mynotes.room.Notes
@@ -31,16 +32,15 @@ class AddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
     _binding  = FragmentAddBinding.inflate(inflater,container,false)
-        val application = requireNotNull(this.activity).application
-
-
-        val viewModelFactory = NotesViewModelFactory(application)
-        notesViewModel = ViewModelProvider(this , viewModelFactory).get(NotesViewModel::class.java)
-
-        binding.saveButton.setOnClickListener {
-           saveNotesToDatabase()
-        }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        notesViewModel =(activity as MainActivity).notesViewModel
+        binding.saveButton.setOnClickListener {
+            saveNotesToDatabase()
+        }
     }
 
     private fun saveNotesToDatabase() {
@@ -61,6 +61,4 @@ class AddFragment : Fragment() {
     private fun inputCheck(title : String, description : String) : Boolean{
         return !(TextUtils.isEmpty(title) && TextUtils.isEmpty(description))
     }
-
-
 }
