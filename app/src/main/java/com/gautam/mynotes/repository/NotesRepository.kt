@@ -1,8 +1,8 @@
-package com.gautam.mynotes.screens.notes
+package com.gautam.mynotes.repository
 
 import androidx.lifecycle.LiveData
-import com.gautam.mynotes.room.Notes
-import com.gautam.mynotes.room.NotesDao
+import androidx.room.Query
+import com.gautam.mynotes.modle.Notes
 import com.gautam.mynotes.room.NotesDatabase
 
 

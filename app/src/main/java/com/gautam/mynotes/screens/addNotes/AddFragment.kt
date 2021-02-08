@@ -7,23 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.appcompat.app.AppCompatDialog
 import androidx.navigation.fragment.findNavController
 import com.gautam.mynotes.MainActivity
 import com.gautam.mynotes.R
 import com.gautam.mynotes.databinding.FragmentAddBinding
-import com.gautam.mynotes.room.Notes
-import com.gautam.mynotes.room.NotesDatabase
-import com.gautam.mynotes.screens.notes.NotesRepository
-import com.gautam.mynotes.screens.notes.NotesViewModel
-import com.gautam.mynotes.screens.notes.NotesViewModelFactory
+import com.gautam.mynotes.modle.Notes
+import com.gautam.mynotes.viewmodles.NotesViewModel
 
 
 class AddFragment : Fragment() {
 
     private lateinit var notesViewModel : NotesViewModel
     private  var _binding : FragmentAddBinding? = null
-
     private val binding get() = _binding!!
 
 
@@ -32,6 +28,10 @@ class AddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
     _binding  = FragmentAddBinding.inflate(inflater,container,false)
+
+//        (activity as AppCompatDialog).apply {
+//            this.supportActionBar.title = "Add Note"
+//            supportActionBar.setDisplayHomeAsUpEnabled(true)}
         return binding.root
     }
 

@@ -2,6 +2,7 @@ package com.gautam.mynotes.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.gautam.mynotes.modle.Notes
 
 @Dao
 interface NotesDao {
@@ -17,6 +18,8 @@ interface NotesDao {
 
     @Query("SELECT * FROM `Notes Table` ORDER BY noteId ASC ")
     fun getAllNotes() : LiveData<List<Notes>>
+
+
 
 
 }

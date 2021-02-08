@@ -1,9 +1,9 @@
-package com.gautam.mynotes.screens.notes
+package com.gautam.mynotes.viewmodles
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.gautam.mynotes.room.NotesDao
+import com.gautam.mynotes.viewmodles.NotesViewModel
 
 class NotesViewModelFactory(
     private val application: Application

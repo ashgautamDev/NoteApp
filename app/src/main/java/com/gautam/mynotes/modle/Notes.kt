@@ -1,4 +1,4 @@
-package com.gautam.mynotes.room
+package com.gautam.mynotes.modle
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

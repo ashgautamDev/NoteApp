@@ -1,11 +1,13 @@
-package com.gautam.mynotes.screens.notes
+package com.gautam.mynotes.viewmodles
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.gautam.mynotes.room.Notes
+import androidx.room.Query
+import com.gautam.mynotes.modle.Notes
 import com.gautam.mynotes.room.NotesDatabase
+import com.gautam.mynotes.repository.NotesRepository
 import kotlinx.coroutines.launch
 
 class NotesViewModel(application: Application) :
@@ -19,8 +21,6 @@ class NotesViewModel(application: Application) :
         repository = NotesRepository(notesDatabase)
         getAllNotes = repository.getAllNotes
     }
-
-
     fun insetNotes(notes: Notes) = viewModelScope.launch {
         repository.insertNotes(notes)
     }

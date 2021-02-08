@@ -1,64 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
-
-   <data>
-       <variable
-           name="notesViewModel"
-           type="com.gautam.mynotes.screens.notes.NotesViewModel" />
-   </data>
-<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
-    tools:context=".screens.notes.NotesFragment" >
-    <TextView
-        android:id="@+id/tvHeading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/main_screen_heading"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    app:layoutDescription="@xml/fragment_notes_xml_constraintlayout_scene"
+    tools:context=".screens.notes.NotesFragment">
 
-    <EditText
-        android:id="@+id/etSeachBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_seach"
-        android:drawablePadding="10dp"
-        android:inputType="textPersonName"
-        android:outlineProvider="bounds"
-        android:hint="@string/search_box"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNotes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHeading" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/notes_card_layout">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/for_adding_notes"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
         android:clickable="true"
+        android:contentDescription="@string/for_adding_notes"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add"
-        android:focusable="true" />
+        app:srcCompat="@drawable/ic_add" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNotes"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/etSeachBox"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/emptyStateLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/empty_state_image"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_empty" />
+
+            <TextView
+                android:id="@+id/empty_state_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/empty_state_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+
+                android:gravity="center_horizontal"
+                android:text="@string/no_notes_found"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="@color/colorPrimaryDark" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+            <TextView
+                android:id="@+id/empty_state_description"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/empty_state_title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:gravity="center_horizontal"
+                android:text="@string/try_adding_some_notes"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textColor="@color/colorPrimaryDark" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
